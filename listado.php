@@ -26,7 +26,7 @@
         </div>
 
         <div>
-        <a href=""><button type="button" class="btn btn-success">Crear</button></a>
+        <a href="crear.php"><button type="button" class="btn btn-success">Crear</button></a>
         <br>
         <br>
             <table class="table table-striped table-dark">

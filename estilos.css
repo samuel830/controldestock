@@ -12,28 +12,46 @@
 th{
     background-color:burlywood;
     padding: 8px;
+    width: 250px;
+}
+
+.codigo{
+    width: 50px;
+}
+
+.nombre{
+    width: 380px;
+}
+
+.detalle{
+    width: 200px;
 }
 
 td{
     background-color: rgb(255, 242, 226);
-    
+    padding: 8px; 
 }
 
 button{
     border: none;
     padding: 10px;
+    border-radius:12px;
+
 }
 
 .info{
     background-color: cadetblue;
+    width: 100%;
 }
 
 .danger{
     background-color: indianred;
+    width: 49%;
 }
 
 .warning{
     background-color: orange;
+    width: 49%;
 }
 
 .success{

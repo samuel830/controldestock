@@ -30,10 +30,10 @@
             <br>
             <table>
                 <tr>
-                    <th>Detalle</th>
-                    <th>Codigo</th>
-                    <th>Nombre</th> 
-                    <th>Acciones</th>
+                    <th class="detalle">Detalle</th>
+                    <th class="codigo">Codigo</th>
+                    <th class="nombre">Nombre</th> 
+                    <th class="acciones">Acciones</th>
                     <?php
                         foreach ($arrDatos as $muestra) {
                             echo '<tr>';

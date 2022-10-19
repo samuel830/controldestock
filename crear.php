@@ -19,23 +19,40 @@
         $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
         //print_r($arrDatos);
     ?>
-    <div>
-        <div class="titulo">
-            <h1>Gestion de productos</h1>
-        </div>
-
+    <div class="titulo">
+        <h1>Crear productos</h1>
+    </div>
+    <div class="contenido">
         <div>
-            <form action="POST">
-                <label>Nombre</label>
-                <input type="text">
-                <label>Nombre corto</label>
-                <input type="text">
-                <label>Precio</label>
-                <input type="text">
-                <label>Familia</label>
-                <select name="" id=""></select>
-                <label>Descripción</label>
-                <input type="text">
+            <form action="listado.php" method="get">
+                <label><b>Nombre:</b></label>
+                <input type="text" name="nombre"><br>
+                <br>
+                <label><b>Email:</b></label>
+                <input type="text" name="correo"><br>
+                <br>
+                <label><b>Selecciona una marca:</b></label><br>
+                <br>
+                <select multiple name="marcas[]">
+                    <option>nike</option>
+                    <option>adidas</option>
+                    <option>reebook</option>
+                    <option>new valance</option>
+                </select><br>
+                <br>
+                <textarea name="textarea" rows="5" cols="30" placeholder="Háblanos sobre tus playeras favoritas..."></textarea><br>
+                <br>
+                <label><b>¿Estas registrado con nosotros?</b></label><input type="checkbox" name="registro">si<br>
+                <br>
+                <label><b>Selecciona tu edad:</b></label><br>
+                <input type="radio" id="age1" name="edad" value="0-30">
+                <label for="age1">0 - 30</label><br>
+                <input type="radio" id="age2" name="edad" value="31-60">
+                <label for="age2">31 - 60</label><br>  
+                <input type="radio" id="age3" name="edad" value="61-100">
+                <label for="age3">61 - 100</label><br>
+                <br>
+                <input type="submit">
             </form>
         </div>
     </div>

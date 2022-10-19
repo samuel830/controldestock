@@ -19,10 +19,6 @@
         $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
         //print_r($arrDatos);
     ?>
-    <div class="titulo">
-            <h1>Gestion de productos</h1>
-    </div>
-    
     <div class="contenido">
         <div>
             <a href="crear.php"><button type="button" class="success">Crear</button></a>

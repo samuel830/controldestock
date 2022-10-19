@@ -34,12 +34,12 @@
                         foreach ($arrDatos as $muestra) {
                             echo '<tr>';
                     
-                            echo '<td><a href=""><button type="button" class="info">Detalle</button></a></td>';
+                            echo '<td><a href="detalle.php?codigo='.$muestra['id'].'"><button type="button" class="info">Detalle</button></a></td>';
                             echo '<td>' . $muestra['id'] . '</td>';
                             echo '<td>' . $muestra['nombre'] . '</td>';
                             echo '<td>
-                                <a href=""><button type="button" class="warning">Actualizar</button></a>
-                                <a href=""><button type="button" class="danger">Eliminar</button></a>
+                                <a href="update.php?codigo='.$muestra['id'].'"><button type="button" class="warning">Actualizar</button></a>
+                                <a href="borrar.php?codigo='.$muestra['id'].'"><button type="button" class="danger">Eliminar</button></a>
                                 </td>';
                         }
                     ?>

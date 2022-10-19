@@ -11,13 +11,6 @@
 <?php
         $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
         $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
-        //echo "Versión: $version";
-
-        $busqueda=$conexion->query("SELECT * FROM productos");
-
-        /*Almacenamos el resultado de fetchAll en una variable*/
-        $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
-        //print_r($arrDatos);
     ?>
     <div class="titulo">
         <h1>Crear productos</h1>
@@ -28,29 +21,28 @@
                 <label><b>Nombre:</b></label>
                 <input type="text" name="nombre"><br>
                 <br>
-                <label><b>Email:</b></label>
+                <label><b>Nombre corto:</b></label>
                 <input type="text" name="correo"><br>
                 <br>
-                <label><b>Selecciona una marca:</b></label><br>
+                <label><b>Precio:</b></label>
+                <input type="text" name="correo"><br>
                 <br>
-                <select multiple name="marcas[]">
-                    <option>nike</option>
-                    <option>adidas</option>
-                    <option>reebook</option>
-                    <option>new valance</option>
+                <label><b>Familia:</b></label>
+                <select name="familia">
+                    <?php
+                        $busqueda=$conexion->query("SELECT nombre FROM familias");
+                        $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
+
+                        foreach($arrDatos as $muestra){
+                            echo '<option>'. $muestra['nombre'].'</option>';
+                        }
+                    ?>  
                 </select><br>
                 <br>
-                <textarea name="textarea" rows="5" cols="30" placeholder="Háblanos sobre tus playeras favoritas..."></textarea><br>
+                <label><b>Descripcion:</b></label>
                 <br>
-                <label><b>¿Estas registrado con nosotros?</b></label><input type="checkbox" name="registro">si<br>
                 <br>
-                <label><b>Selecciona tu edad:</b></label><br>
-                <input type="radio" id="age1" name="edad" value="0-30">
-                <label for="age1">0 - 30</label><br>
-                <input type="radio" id="age2" name="edad" value="31-60">
-                <label for="age2">31 - 60</label><br>  
-                <input type="radio" id="age3" name="edad" value="61-100">
-                <label for="age3">61 - 100</label><br>
+                <textarea name="textarea" rows="10" cols="50" ></textarea><br>
                 <br>
                 <input type="submit">
             </form>

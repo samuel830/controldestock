@@ -1,11 +1,10 @@
+body{
+    background-color: aquamarine;
+}
 .titulo{
     text-align: center;
 }
 
 div{
-    margin-top: 10%;
-}
-
-h1{
-    color: aqua;
+    margin-top: 3%;
 }

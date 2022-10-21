@@ -20,8 +20,8 @@
             <?php
                 $codigo = $_GET["codigo"]; 
 
-                $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
-                $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
+                //$busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
+                //$arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
                 //print_r($arrDatos);
             ?>
         </div>

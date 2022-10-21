@@ -11,16 +11,54 @@
     <?php
         $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
         $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
-        //echo "Versión: $version";
+
+        /*function crear($nombre_form,$nombreCorto_form,$precio_form,$familia_form,$descripcion_form){
+            $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
+            VALUES ('".$nombre_form."','".$nombreCorto_form."','".$descripcion_form."','".$precio_form."','".$familia_form."')");
+        }
+
+        function update(){
+
+        }
+
+        function borrar(){
+
+        }*/
+
+        if(!empty($_GET)){
+            $accion = $_GET["accion"];
+
+            switch($accion){
+                case "crear":
+                    $nombre = $_GET["nombre"];
+                    $nombreCorto = $_GET["nombrecorto"];
+                    $precio = $_GET["precio"];
+                    $familia = $_GET["familia"];
+                    $descripcion = $_GET["textarea"];
+
+                    $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
+                    VALUES ('".$nombre."','".$nombreCorto."','".$descripcion."','".$precio."','".$familia."')");
+
+                    break;
+
+                case "actualizar":
+                    break;
+
+                case "eliminar":
+                    break;
+            }
+        }
 
         $busqueda=$conexion->query("SELECT * FROM productos");
 
-        /*Almacenamos el resultado de fetchAll en una variable*/
         $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
-        //print_r($arrDatos);
+
+
     ?>
     <div class="contenido">
         <div>
+            <h1>GESTOR DE CONTENIDO</h1>
+            <br><br>
             <a href="crear.php"><button type="button" class="success">Crear</button></a>
             <br>
             <br>

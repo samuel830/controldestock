@@ -22,19 +22,19 @@
                 <input type="text" name="nombre"><br>
                 <br>
                 <label><b>Nombre corto:</b></label>
-                <input type="text" name="correo"><br>
+                <input type="text" name="nombrecorto"><br>
                 <br>
                 <label><b>Precio:</b></label>
-                <input type="text" name="correo"><br>
+                <input type="text" name="precio"><br>
                 <br>
                 <label><b>Familia:</b></label>
                 <select name="familia">
                     <?php
-                        $busqueda=$conexion->query("SELECT nombre FROM familias");
+                        $busqueda=$conexion->query("SELECT * FROM familias");
                         $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
 
                         foreach($arrDatos as $muestra){
-                            echo '<option>'. $muestra['nombre'].'</option>';
+                            echo '<option value="'. $muestra['cod'].'">'. $muestra['nombre'].'</option>';
                         }
                     ?>  
                 </select><br>
@@ -44,6 +44,7 @@
                 <br>
                 <textarea name="textarea" rows="10" cols="50" ></textarea><br>
                 <br>
+                <input name="accion" type="hidden" value="crear"><br>
                 <input type="submit">
             </form>
         </div>

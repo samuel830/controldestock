@@ -62,6 +62,7 @@
                     }
                 ?> 
                 <br>
+                <input name="accion" type="hidden" value="actualizar"><br>
                 <input type="submit">
             </form>
         </div>

@@ -15,26 +15,19 @@
         /*function crear($nombre_form,$nombreCorto_form,$precio_form,$familia_form,$descripcion_form){
             $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
             VALUES ('".$nombre_form."','".$nombreCorto_form."','".$descripcion_form."','".$precio_form."','".$familia_form."')");
-        }
-
-        function update(){
-
-        }
-
-        function borrar(){
-
         }*/
 
         if(!empty($_GET)){
             $accion = $_GET["accion"];
+            
+            $nombre = $_GET["nombre"];
+            $nombreCorto = $_GET["nombrecorto"];
+            $precio = $_GET["precio"];
+            $familia = $_GET["familia"];
+            $descripcion = $_GET["textarea"];
 
             switch($accion){
                 case "crear":
-                    $nombre = $_GET["nombre"];
-                    $nombreCorto = $_GET["nombrecorto"];
-                    $precio = $_GET["precio"];
-                    $familia = $_GET["familia"];
-                    $descripcion = $_GET["textarea"];
 
                     $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
                     VALUES ('".$nombre."','".$nombreCorto."','".$descripcion."','".$precio."','".$familia."')");

@@ -44,7 +44,7 @@
                 <br>
                 <textarea name="textarea" rows="10" cols="50" ></textarea><br>
                 <br>
-                <input name="accion" type="hidden" value="crear"><br>
+                <input name="accion" type="hidden" value="crear">
                 <input type="submit">
             </form>
         </div>

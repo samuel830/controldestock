@@ -70,8 +70,8 @@
                     }
                 ?> 
                 <br>
-                <input name="accion" type="hidden" value="actualizar"><br>
-                <input name="codigo" type="hidden" value="<?php echo $codigo ?>"><br>
+                <input name="accion" type="hidden" value="actualizar">
+                <input name="codigo" type="hidden" value="<?php echo $codigo ?>">
                 <input type="submit">
             </form>
         </div>

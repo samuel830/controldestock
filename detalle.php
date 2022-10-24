@@ -15,7 +15,7 @@
     <div class="titulo">
         <h1>Detalles del producto</h1>
     </div>
-    <div class="contenido">
+    <div>
         <?php
             $codigo = $_GET["codigo"]; 
 
@@ -23,17 +23,19 @@
             $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
             //print_r($arrDatos);
 
-            echo '<div class="infotexto">';
-
             foreach($arrDatos as $muestra){
+                echo "<label>Nombre:</label><br>";
                 echo $muestra['nombre'] . '</br>';
+                echo "<label>Nombre corto:</label><br>";
                 echo $muestra['nombre_corto'] . '</br>';
+                echo "<label>Familia:</label><br>";
                 echo $muestra['familia'] . '</br>';
+                echo "<label>Precio:</label><br>";
                 echo $muestra['pvp'] . '</br>';
+                echo "<label>Descripcion:</label><br>";
                 echo $muestra['descripcion'] . '</br>';
             }
         ?>
-        </div>
     </div>
 </body>
 </html>

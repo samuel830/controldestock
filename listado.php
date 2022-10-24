@@ -32,6 +32,8 @@
                     $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
                     VALUES ('".$nombre."','".$nombreCorto."','".$descripcion."','".$precio."','".$familia."')");
 
+                    header("Location: listado.php");
+
                     break;
 
                 case "actualizar":
@@ -49,11 +51,15 @@
                     familia='".$familia."'
                     WHERE id='".$codigo."'");
 
+                    header("Location: listado.php");
+
                     break;
 
                 case "eliminar":
                     $codigo = $_GET["codigo"];
                     $busqueda=$conexion->query("DELETE FROM productos WHERE id='".$codigo."'");
+
+                    header("Location: listado.php");
                     break;
             }
         }

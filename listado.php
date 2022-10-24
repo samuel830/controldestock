@@ -42,9 +42,25 @@
                     break;
 
                 case "actualizar":
+                    $codigo = $_GET["codigo"];
+                    $nombre = $_GET["nombre"];
+                    $nombreCorto = $_GET["nombrecorto"];
+                    $precio = $_GET["precio"];
+                    $familia = $_GET["familia"];
+                    $descripcion = $_GET["textarea"];
+
+                    $busqueda=$conexion->query("UPDATE productos SET nombre='".$nombre."',
+                    nombre_corto='".$nombreCorto."',
+                    descripcion='".$descripcion."',
+                    pvp='".$precio."',
+                    familia='".$familia."'
+                    WHERE id='".$codigo."'");
+
                     break;
 
                 case "eliminar":
+                    $codigo = $_GET["codigo"];
+                    $busqueda=$conexion->query("DELETE FROM productos WHERE id='".$codigo."'");
                     break;
             }
         }

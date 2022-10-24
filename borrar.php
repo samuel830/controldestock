@@ -19,10 +19,8 @@
         <div>
             <?php
                 $codigo = $_GET["codigo"]; 
-
-                //$busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
-                //$arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
-                //print_r($arrDatos);
+                echo "<h2>¿Desea eliminar el producto con id ".$codigo."?</h2>";
+                echo '<a href="listado.php?codigo='.$codigo.'&accion=eliminar"><button type="button" class="danger">Eliminar</button></a>';
             ?>
         </div>
     </div>

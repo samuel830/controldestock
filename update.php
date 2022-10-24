@@ -16,6 +16,9 @@
 
         $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
         $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
+
+        $familias=$conexion->query("SELECT * FROM familias");
+        $arrFamilias=$familias->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <div class="titulo">
         <h1>Actualizar productos</h1>
@@ -47,8 +50,13 @@
                 <label><b>Familia:</b></label>
                 <select name="familia">
                     <?php
-                        foreach($arrDatos as $muestra){
-                            echo '<option>'. $muestra['familia'].'</option>';
+                        foreach($arrFamilias as $muestra){
+                            foreach($arrDatos as $datos){
+                                if($muestra['cod'] == $datos['familia']){
+                                    echo '<option selected>'. $muestra['nombre'].'</option>';
+                                }
+                            }
+                            echo '<option>'. $muestra['nombre'].'</option>';
                         }
                     ?>  
                 </select><br>
@@ -63,6 +71,7 @@
                 ?> 
                 <br>
                 <input name="accion" type="hidden" value="actualizar"><br>
+                <input name="codigo" type="hidden" value="<?php echo $codigo ?>"><br>
                 <input type="submit">
             </form>
         </div>

@@ -9,16 +9,20 @@
 </head>
 <body>
 <?php
+    try{
         $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
         $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
+    }catch(PDOException $ex){
+        die("Error en la conexion, mensaje de erro:".$ex->getMessage());
+    }
 
-        $codigo = $_GET["codigo"]; 
+    $codigo = $_GET["codigo"]; 
 
-        $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
-        $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
+    $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
+    $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
 
-        $familias=$conexion->query("SELECT * FROM familias");
-        $arrFamilias=$familias->fetchAll(PDO::FETCH_ASSOC);
+    $familias=$conexion->query("SELECT * FROM familias");
+    $arrFamilias=$familias->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <div class="titulo">
         <h1>Actualizar productos</h1>

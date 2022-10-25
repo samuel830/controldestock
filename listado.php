@@ -9,9 +9,12 @@
 </head>
 <body>
     <?php
+    try{
         $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
         $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
-        
+    }catch(PDOException $ex){
+        die("Error en la conexion, mensaje de erro:".$ex->getMessage());
+    }
         if(!empty($_GET)){
             $accion = $_GET["accion"];
 
@@ -39,11 +42,17 @@
                     $familia = $_GET["familia"];
                     $descripcion = $_GET["textarea"];
 
+                    $familiaCod=$conexion->query("SELECT * from familias where nombre='".$familia."'");
+                    $arrFamiliasCod=$familiaCod->fetch();
+                    //print_r($arrFamiliasCod);
+                    $codfamilia = $arrFamiliasCod["cod"];
+                    //echo $codfamilia;
+
                     $busqueda=$conexion->query("UPDATE productos SET nombre='".$nombre."',
                     nombre_corto='".$nombreCorto."',
                     descripcion='".$descripcion."',
                     pvp='".$precio."',
-                    familia='".$familia."'
+                    familia='".$arrFamiliasCod['cod']."'
                     WHERE id='".$codigo."'");
 
                     header("Location: listado.php");

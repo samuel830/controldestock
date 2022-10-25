@@ -9,8 +9,12 @@
 </head>
 <body>
 <?php
+    try{
         $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
         $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
+    }catch(PDOException $ex){
+        die("Error en la conexion, mensaje de erro:".$ex->getMessage());
+    }
     ?>
     <div class="titulo">
         <h1>Eliminar productos</h1>

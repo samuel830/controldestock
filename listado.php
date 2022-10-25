@@ -11,12 +11,7 @@
     <?php
         $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
         $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
-
-        /*function crear($nombre_form,$nombreCorto_form,$precio_form,$familia_form,$descripcion_form){
-            $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
-            VALUES ('".$nombre_form."','".$nombreCorto_form."','".$descripcion_form."','".$precio_form."','".$familia_form."')");
-        }*/
-
+        
         if(!empty($_GET)){
             $accion = $_GET["accion"];
 

@@ -15,27 +15,42 @@
     <div class="titulo">
         <h1>Detalles del producto</h1>
     </div>
-    <div>
+    <div class="contenido">
+        <table>
+                <tr>
+                    <th >Nombre</th>
+                    <th >Nombre corto</th>
+                    <th >Familia</th> 
+                    <th >Precio</th>
+                    <th >Descripcion</th>
         <?php
             $codigo = $_GET["codigo"]; 
 
             $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
             $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
-            //print_r($arrDatos);
+
+            $familias=$conexion->query("SELECT * FROM familias");
+            $arrFamilias=$familias->fetchAll(PDO::FETCH_ASSOC);
 
             foreach($arrDatos as $muestra){
-                echo "<label>Nombre:</label><br>";
-                echo $muestra['nombre'] . '</br>';
-                echo "<label>Nombre corto:</label><br>";
-                echo $muestra['nombre_corto'] . '</br>';
-                echo "<label>Familia:</label><br>";
-                echo $muestra['familia'] . '</br>';
-                echo "<label>Precio:</label><br>";
-                echo $muestra['pvp'] . '</br>';
-                echo "<label>Descripcion:</label><br>";
-                echo $muestra['descripcion'] . '</br>';
+                echo '<tr>';
+                    
+                echo '<td>' . $muestra['nombre'] . '</td>';
+                echo '<td>' . $muestra['nombre_corto'] . '</td>';
+                foreach($arrFamilias as $familias){
+                    foreach($arrDatos as $muestra){
+                        if($familias['cod'] == $muestra['familia']){
+                            echo '<td>' . $familias['nombre'] . '</td>';
+                        }
+                    }
+                }
+                echo '<td>' . $muestra['pvp'] . '</td>';
+                echo '<td>' . $muestra['descripcion'] . '</td>';
             }
         ?>
+            </tr>
+             <tr>
+        </table>
     </div>
 </body>
 </html>

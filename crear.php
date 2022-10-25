@@ -50,7 +50,8 @@
                 <textarea name="textarea" rows="10" cols="50" ></textarea><br>
                 <br>
                 <input name="accion" type="hidden" value="crear">
-                <input type="submit">
+                <input type="reset" value="Borrar">
+                <input type="submit" value="Crear">
             </form>
         </div>
     </div>

@@ -24,7 +24,7 @@
             <?php
                 $codigo = $_GET["codigo"]; 
                 echo "<h2>¿Desea eliminar el producto con id ".$codigo."?</h2>";
-                echo '<a href="listado.php?codigo='.$codigo.'&accion=eliminar"><button type="button" class="danger">Eliminar</button></a>';
+                echo '<a href="listado.php?codigo='.$codigo.'&accion=eliminar"><button type="button" class="eliminar">Eliminar</button></a>';
             ?>
         </div>
     </div>

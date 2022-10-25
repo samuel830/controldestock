@@ -14,6 +14,14 @@ body{
     margin-top: 3%;
 }
 
+.contenidoDetalles{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 3%;
+    text-align: center;
+}
+
 th{
     background-color:burlywood;
     padding: 8px;
@@ -58,6 +66,15 @@ button{
     width: 49%;
 }
 
+.eliminar{
+    background-color: indianred;
+    width: 100%;
+}
+
+.eliminar:hover {
+    background-color: rgb(204, 32, 32);
+}
+
 .danger:hover {
     background-color: rgb(204, 32, 32);
 }
@@ -78,7 +95,11 @@ button{
 
 .volver{
     background-color: burlywood;
-    width: 100%;
+    width: 200px;
+}
+
+.volver:hover{
+    background-color: rgb(173, 125, 62);
 }
 
 .success:hover {

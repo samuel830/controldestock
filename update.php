@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-    try{
+        try{
         $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
         $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
     }catch(PDOException $ex){
@@ -58,9 +58,9 @@
                             foreach($arrDatos as $datos){
                                 if($muestra['cod'] == $datos['familia']){
                                     echo '<option selected>'. $muestra['nombre'].'</option>';
-                                }
+                                }else
+                                    echo '<option>'. $muestra['nombre'].'</option>';
                             }
-                            echo '<option>'. $muestra['nombre'].'</option>';
                         }
                     ?>  
                 </select><br>
@@ -76,7 +76,8 @@
                 <br>
                 <input name="accion" type="hidden" value="actualizar">
                 <input name="codigo" type="hidden" value="<?php echo $codigo ?>">
-                <input type="submit">
+                <input type="reset" value="Borrar">
+                <input type="submit" value="Actualizar">
             </form>
         </div>
     </div>

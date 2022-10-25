@@ -20,7 +20,8 @@
     <div class="titulo">
         <h1>Detalles del producto</h1>
     </div>
-    <div class="contenido">
+    <div class="contenidoDetalles">
+        <div>
         <table>
                 <tr>
                     <th >Nombre</th>
@@ -56,7 +57,10 @@
         </tr>
         <tr>
         </table>
+        <br>
+        <br>
         <a href="listado.php"><button type="button" class="volver">Volver</button></a>
+        </div>
     </div>
 </body>
 </html>

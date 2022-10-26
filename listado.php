@@ -12,8 +12,9 @@
     try{
         $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
         $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
-    }catch(PDOException $ex){
-        die("Error en la conexion, mensaje de erro:".$ex->getMessage());
+    }catch(PDOException $e){
+        echo 'Error de conexión: ' . $e->getMessage();
+        exit;
     }
         if(!empty($_GET)){
             $accion = $_GET["accion"];
@@ -27,8 +28,13 @@
                     $familia = $_GET["familia"];
                     $descripcion = $_GET["textarea"];
 
-                    $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
-                    VALUES ('".$nombre."','".$nombreCorto."','".$descripcion."','".$precio."','".$familia."')");
+                    try{
+                        $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
+                        VALUES ('".$nombre."','".$nombreCorto."','".$descripcion."','".$precio."','".$familia."')");
+                    }catch(PDOException $e){
+                        echo 'Error de consulta: ' . $e->getMessage();
+                        exit;
+                    }
 
                     header("Location: listado.php");
 
@@ -42,37 +48,49 @@
                     $familia = $_GET["familia"];
                     $descripcion = $_GET["textarea"];
 
-                    $familiaCod=$conexion->query("SELECT * from familias where nombre='".$familia."'");
-                    $arrFamiliasCod=$familiaCod->fetch();
-                    //print_r($arrFamiliasCod);
-                    $codfamilia = $arrFamiliasCod["cod"];
-                    //echo $codfamilia;
+                    try{
+                        $familiaCod=$conexion->query("SELECT * from familias where nombre='".$familia."'");
+                        $arrFamiliasCod=$familiaCod->fetch();
+                        $codfamilia = $arrFamiliasCod["cod"];
 
-                    $busqueda=$conexion->query("UPDATE productos SET nombre='".$nombre."',
-                    nombre_corto='".$nombreCorto."',
-                    descripcion='".$descripcion."',
-                    pvp='".$precio."',
-                    familia='".$arrFamiliasCod['cod']."'
-                    WHERE id='".$codigo."'");
-
+                        $busqueda=$conexion->query("UPDATE productos SET nombre='".$nombre."',
+                        nombre_corto='".$nombreCorto."',
+                        descripcion='".$descripcion."',
+                        pvp='".$precio."',
+                        familia='".$arrFamiliasCod['cod']."'
+                        WHERE id='".$codigo."'");
+                    }catch(PDOException $e){
+                        echo 'Error de consulta: ' . $e->getMessage();
+                        exit;
+                    }
+                    
                     header("Location: listado.php");
 
                     break;
 
                 case "eliminar":
                     $codigo = $_GET["codigo"];
-                    $busqueda=$conexion->query("DELETE FROM productos WHERE id='".$codigo."'");
 
+                    try{
+                        $busqueda=$conexion->query("DELETE FROM productos WHERE id='".$codigo."'");
+                    }catch(PDOException $e){
+                        echo 'Error de consulta: ' . $e->getMessage();
+                        exit;
+                    }
+                    
                     header("Location: listado.php");
                     break;
             }
         }
 
-        $busqueda=$conexion->query("SELECT * FROM productos");
-
-        $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
-
-
+        try{
+            $busqueda=$conexion->query("SELECT * FROM productos");
+            $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){
+            echo 'Error de consulta: ' . $e->getMessage();
+            exit;
+        }
+        
     ?>
     <div class="contenido">
         <div>

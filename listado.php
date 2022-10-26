@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control de stock</title>
+    <title>Listado</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
@@ -115,6 +115,7 @@
                             echo '<td>
                                 <a href="update.php?codigo='.$muestra['id'].'"><button type="button" class="warning">Actualizar</button></a>
                                 <a href="borrar.php?codigo='.$muestra['id'].'"><button type="button" class="danger">Eliminar</button></a>
+                                <a href="muevestock.php?codigo='.$muestra['id'].'&nombre='.$muestra['nombre'].'"><button type="button" class="stock">Mover a stock</button></a>
                                 </td>';
                         }
                     ?>

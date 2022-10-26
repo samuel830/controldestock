@@ -61,9 +61,9 @@
             }
             
         ?>
-        </tr>
-        <tr>
-        </table>
+                    </tr>
+                <tr>
+            </table>
         <br>
         <br>
         <a href="listado.php"><button type="button" class="volver">Volver</button></a>
@@ -71,3 +71,7 @@
     </div>
 </body>
 </html>
+
+<?php
+    $conexion = null;
+?>

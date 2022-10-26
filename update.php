@@ -83,10 +83,15 @@
                 <br>
                 <input name="accion" type="hidden" value="actualizar">
                 <input name="codigo" type="hidden" value="<?php echo $codigo ?>">
-                <input type="reset" value="Borrar">
-                <input type="submit" value="Actualizar">
+                <button class="button-input" type="reset">Limpiar</button>
+                <br><br>
+                <button class="button-input" type="submit">Actualizar</button>
             </form>
         </div>
     </div>
 </body>
 </html>
+
+<?php
+    $conexion = null;
+?>

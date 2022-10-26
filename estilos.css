@@ -11,7 +11,7 @@ body{
     justify-content: center;
     display: flex;
     align-items: center;
-    margin-top: 3%;
+    margin-top: 2%;
 }
 
 .contenidoDetalles{
@@ -50,6 +50,14 @@ button{
     padding: 10px;
     border-radius:12px;
 
+}
+
+.button-input{
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius:12px;
+    background-color: rgb(218, 192, 159);
 }
 
 .info{
@@ -98,6 +106,16 @@ button{
     width: 200px;
 }
 
+.stock{
+    background-color: burlywood;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.stock:hover{
+    background-color: rgb(173, 125, 62);
+}
+
 .volver:hover{
     background-color: rgb(173, 125, 62);
 }
@@ -107,8 +125,10 @@ button{
 }
 
 input{
-   border-radius: 4px; 
-   border-color: burlywood;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    border-radius:12px;
 }
 
 .infotexto{

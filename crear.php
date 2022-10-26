@@ -56,10 +56,15 @@
                 <textarea name="textarea" rows="10" cols="50" ></textarea><br>
                 <br>
                 <input name="accion" type="hidden" value="crear">
-                <input type="reset" value="Borrar">
-                <input type="submit" value="Crear">
+                <button class="button-input" type="reset">Limpiar</button>
+                <br><br>
+                <button class="button-input" type="submit">Crear</button>
             </form>
         </div>
     </div>
 </body>
 </html>
+
+<?php
+    $conexion = null;
+?>

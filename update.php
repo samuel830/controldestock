@@ -19,11 +19,17 @@
 
     $codigo = $_GET["codigo"]; 
 
-    $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
-    $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
+    try{
+        $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
+        $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
 
-    $familias=$conexion->query("SELECT * FROM familias");
-    $arrFamilias=$familias->fetchAll(PDO::FETCH_ASSOC);
+        $familias=$conexion->query("SELECT * FROM familias");
+        $arrFamilias=$familias->fetchAll(PDO::FETCH_ASSOC);
+    }catch(PDOException $ex){
+        echo 'Error de consulta: ' . $e->getMessage();
+        exit;
+    }
+        
     ?>
     <div class="titulo">
         <h1>Actualizar productos</h1>

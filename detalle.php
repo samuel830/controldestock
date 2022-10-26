@@ -33,27 +33,33 @@
         <?php
             $codigo = $_GET["codigo"]; 
 
-            $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
-            $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
+            try{
+                $busqueda=$conexion->query("SELECT * FROM productos WHERE id = $codigo");
+                $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
 
-            $familias=$conexion->query("SELECT * FROM familias");
-            $arrFamilias=$familias->fetchAll(PDO::FETCH_ASSOC);
+                $familias=$conexion->query("SELECT * FROM familias");
+                $arrFamilias=$familias->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach($arrDatos as $muestra){
-                echo '<tr>';
-                    
-                echo '<td>' . $muestra['nombre'] . '</td>';
-                echo '<td>' . $muestra['nombre_corto'] . '</td>';
-                foreach($arrFamilias as $familias){
-                    foreach($arrDatos as $muestra){
-                        if($familias['cod'] == $muestra['familia']){
-                            echo '<td>' . $familias['nombre'] . '</td>';
+                foreach($arrDatos as $muestra){
+                    echo '<tr>';
+                        
+                    echo '<td>' . $muestra['nombre'] . '</td>';
+                    echo '<td>' . $muestra['nombre_corto'] . '</td>';
+                    foreach($arrFamilias as $familias){
+                        foreach($arrDatos as $muestra){
+                            if($familias['cod'] == $muestra['familia']){
+                                echo '<td>' . $familias['nombre'] . '</td>';
+                            }
                         }
                     }
-                }
                 echo '<td>' . $muestra['pvp'] . '</td>';
                 echo '<td>' . $muestra['descripcion'] . '</td>';
+                }
+            }catch(PDOException $e){
+                echo 'Error de consulta: ' . $e->getMessage();
+                exit;
             }
+            
         ?>
         </tr>
         <tr>

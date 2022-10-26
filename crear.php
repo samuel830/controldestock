@@ -36,11 +36,16 @@
                 <label><b>Familia:</b></label>
                 <select name="familia">
                     <?php
-                        $busqueda=$conexion->query("SELECT * FROM familias");
-                        $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
+                        try{
+                            $busqueda=$conexion->query("SELECT * FROM familias");
+                            $arrDatos=$busqueda->fetchAll(PDO::FETCH_ASSOC);
 
-                        foreach($arrDatos as $muestra){
-                            echo '<option value="'. $muestra['cod'].'">'. $muestra['nombre'].'</option>';
+                            foreach($arrDatos as $muestra){
+                                echo '<option value="'. $muestra['cod'].'">'. $muestra['nombre'].'</option>';
+                            }
+                        }catch(PDOException $e){
+                            echo 'Error de consulta: ' . $e->getMessage();
+                            exit;
                         }
                     ?>  
                 </select><br>

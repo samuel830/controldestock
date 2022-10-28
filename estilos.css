@@ -60,6 +60,10 @@ button{
     background-color: rgb(218, 192, 159);
 }
 
+.button-input:hover{
+    background-color: rgb(173, 125, 62);
+}
+
 .info{
     background-color: rgb(127, 188, 190);
     width: 100%;

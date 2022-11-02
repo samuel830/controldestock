@@ -96,6 +96,7 @@
 <!-------------------------------------------------------------------------------------------------------------------------------
     <?php
         }else if(count($_GET) > 2){
+            $nombreProducto = $_GET["nombreProducto"];
             try{
                 $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
                 $version = $conexion->getAttribute(PDO::ATTR_SERVER_VERSION);
@@ -129,7 +130,7 @@
                     exit;
                 }
 
-                header("Location: muevestock.php?codigo=26&nombre=Creative%20Zen%20MP4%208GB%20Style%20300");
+                header("Location: muevestock.php?codigo=$codigoProducto&nombre=$nombreProducto");
 
             }else{
                 echo "Se esta intentando enviar el producto a la misma tienda";

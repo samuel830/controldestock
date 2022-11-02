@@ -114,7 +114,7 @@
                             echo '<td>' . $muestra['nombre'] . '</td>';
                             echo '<td>
                                 <a href="update.php?codigo='.$muestra['id'].'"><button type="button" class="warning">Actualizar</button></a>
-                                <a href="borrar.php?codigo='.$muestra['id'].'"><button type="button" class="danger">Eliminar</button></a>
+                                <a href="borrar.php?codigo='.$muestra['id'].'&nombre='.$muestra['nombre'].'"><button type="button" class="danger">Eliminar</button></a>
                                 <a href="muevestock.php?codigo='.$muestra['id'].'&nombre='.$muestra['nombre'].'"><button type="button" class="stock">Mover a stock</button></a>
                                 </td>';
                         }

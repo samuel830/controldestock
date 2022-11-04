@@ -120,16 +120,23 @@
                     $comprobarExiste = $conexion->query("SELECT unidades FROM stocks WHERE producto = '".$codigoProducto."' AND tienda='".$tiendaActual."'");
                     $arrStockActualizados=$comprobarExiste->fetch();
                     $unidadesModificadas =$arrStockActualizados["unidades"];
-                    if($unidadesModificadas == 0){
-                        $eliminar=$conexion->query("DELETE FROM stocks WHERE producto = '".$codigoProducto."' AND tienda='".$tiendaActual."'");
+
+                    $comprobacionEnviar = $conexion->query("SELECT * FROM stocks WHERE producto = '".$codigoProducto."' AND tienda='".$tiendaDestino."'");
+                    $arrStockEnvio=$comprobacionEnviar->fetch();
+
+                    if($arrStockEnvio){
+                        if($unidadesModificadas == 0){
+                            $eliminar=$conexion->query("DELETE FROM stocks WHERE producto = '".$codigoProducto."' AND tienda='".$tiendaActual."'");
+                        }
+                        $añadirProductoEnviar=$conexion->query("UPDATE stocks SET unidades=unidades + '".$unidadesEnviar."' WHERE producto = '".$codigoProducto."' AND tienda='".$tiendaDestino."'");
+                    }else{
+                        $crearProductoEnviar=$conexion->query("INSERT INTO stocks (producto,tienda,unidades) VALUES ('".$codigoProducto."','".$tiendaDestino."','".$unidadesEnviar."')");
                     }
 
-                    $añadirProductoEnviar=$conexion->query("UPDATE stocks SET unidades=unidades + '".$unidadesEnviar."' WHERE producto = '".$codigoProducto."' AND tienda='".$tiendaDestino."'");
                 }catch(PDOException $e){
                     echo 'Error de consulta: ' . $e->getMessage();
                     exit;
                 }
-
                 header("Location: muevestock.php?codigo=$codigoProducto&nombre=$nombreProducto");
 
             }else{

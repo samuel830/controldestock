@@ -24,6 +24,13 @@
             echo 'Error de conexión: ' . $e->getMessage();
             exit;
         }
+
+        $busquedaUsuarios = $conexion->query("SELECT * FROM usuarios where usuario='".$usuario."'");
+        $detallesUsuario = $busquedaUsuarios->fetch();
+
+        $_SESSION["colorfondo"] = $detallesUsuario["colorfondo"];
+        $_SESSION["tipoletra"] = $detallesUsuario["tipoletra"];
+
         if(!empty($_GET)){
             $accion = $_GET["accion"];
     

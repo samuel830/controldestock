@@ -1,3 +1,32 @@
+/* header { 
+    background: burlywood;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+  
+nav {
+    float: right;
+}
+  
+nav ul {
+    list-style: none;
+    overflow: hidden; 
+}
+  
+nav ul li {
+    float: right;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+nav ul li a{
+    display: block;
+    padding: 10px;
+    margin-right: 10px;
+    color: #000;
+    text-decoration: none;
+}*/
+
 body{
     background-color: rgb(255, 242, 226);
 }
@@ -11,7 +40,6 @@ body{
     justify-content: center;
     display: flex;
     align-items: center;
-    margin-top: 2%;
 }
 
 .contenidoDetalles{

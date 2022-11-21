@@ -13,7 +13,7 @@
             <title>Crear producto</title>
             <link rel="stylesheet" href="estilos.css">
         </head>
-        <body>
+        <body style="background-color: #<?php echo $_SESSION["colorfondo"] ?>; font-family: '<?php echo $_SESSION["tipoletra"] ?>'">
         <?php
             try{
                 $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");

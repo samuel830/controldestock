@@ -26,7 +26,7 @@
             <title>Perfil</title>
             <link rel="stylesheet" href="estilos.css">
         </head>
-        <body>
+        <body style="background-color: #<?php echo $_SESSION["colorfondo"] ?>; font-family: '<?php echo $_SESSION["tipoletra"] ?>'">
             <div class="titulo">
             <h1>Perfil</h1>
             </div>

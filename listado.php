@@ -7,7 +7,6 @@
     <title>Listado</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
-<body>
     <?php
     if(!empty($_POST)){
 
@@ -106,6 +105,7 @@
         }
 
         ?>
+        <body style="background-color: #<?php echo $_SESSION["colorfondo"] ?>; font-family: '<?php echo $_SESSION["tipoletra"] ?>'">
         <div class="contenido">
             <div>
                 <h1>GESTOR DE CONTENIDO</h1>

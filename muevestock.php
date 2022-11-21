@@ -13,7 +13,7 @@
             <title>Stock</title>
             <link rel="stylesheet" href="estilos.css">
         </head>
-        <body>
+        <body style="background-color: #<?php echo $_SESSION["colorfondo"] ?>; font-family: '<?php echo $_SESSION["tipoletra"] ?>'">
             <?php
             if(count($_GET) == 2){
                 $nombreProducto = $_GET["nombre"];

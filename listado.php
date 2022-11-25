@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-    <?php
-    if(!empty($_POST)){
-
-        $usuario = $_POST['usuario'];
-
-        session_start();
-
-        $_SESSION["usuario"] = $usuario;
+<?php
+    session_start();
+    if(isset($_SESSION["usuario"])){
+        $usuario = $_SESSION["usuario"];
 
         try{
             $conexion=new PDO("mysql:host=localhost;dbname=proyecto","samuel","1234");
@@ -24,8 +11,13 @@
             exit;
         }
 
-        $busquedaUsuarios = $conexion->query("SELECT * FROM usuarios where usuario='".$usuario."'");
-        $detallesUsuario = $busquedaUsuarios->fetch();
+        try{
+            $busquedaUsuarios = $conexion->query("SELECT * FROM usuarios where usuario='".$usuario."'");
+            $detallesUsuario = $busquedaUsuarios->fetch();
+        }catch(PDOException $ex){
+            echo 'Error de consulta: ' . $e->getMessage();
+            exit;
+        }
 
         $_SESSION["colorfondo"] = $detallesUsuario["colorfondo"];
         $_SESSION["tipoletra"] = $detallesUsuario["tipoletra"];
@@ -43,7 +35,7 @@
                     $descripcion = $_GET["textarea"];
     
                     try{
-                        $busqueda=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
+                        $insetarProducto=$conexion->query("INSERT INTO productos (nombre,nombre_corto,descripcion,pvp,familia) 
                         VALUES ('".$nombre."','".$nombreCorto."','".$descripcion."','".$precio."','".$familia."')");
                     }catch(PDOException $e){
                         echo 'Error de consulta: ' . $e->getMessage();
@@ -66,7 +58,7 @@
                         $arrFamiliasCod=$familiaCod->fetch();
                         $codfamilia = $arrFamiliasCod["cod"];
     
-                        $busqueda=$conexion->query("UPDATE productos SET nombre='".$nombre."',
+                        $actualizarProducto=$conexion->query("UPDATE productos SET nombre='".$nombre."',
                         nombre_corto='".$nombreCorto."',
                         descripcion='".$descripcion."',
                         pvp='".$precio."',
@@ -85,7 +77,7 @@
                     $codigo = $_GET["codigo"];
     
                     try{
-                        $busqueda=$conexion->query("DELETE FROM productos WHERE id='".$codigo."'");
+                        $eliminarProducto=$conexion->query("DELETE FROM productos WHERE id='".$codigo."'");
                     }catch(PDOException $e){
                         echo 'Error de consulta: ' . $e->getMessage();
                         exit;
@@ -104,7 +96,16 @@
             exit;
         }
 
-        ?>
+?>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Listado</title>
+            <link rel="stylesheet" href="estilos.css">
+        </head>
         <body style="background-color: #<?php echo $_SESSION["colorfondo"] ?>; font-family: '<?php echo $_SESSION["tipoletra"] ?>'">
         <div class="contenido">
             <div>

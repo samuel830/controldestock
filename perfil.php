@@ -77,18 +77,24 @@
                             $tipoletra = $_GET["tipoletra"];
         
                             try{
-                                $actualizarUsuario=$conexion->query("UPDATE usuarios SET usuario='".$usuario."',
+                                $sql = "UPDATE usuarios SET usuario='".$usuario."',
                                 clave='".$clave."',
                                 nombrecompleto='".$nombreUsuario."',
                                 correo='".$correo."',
                                 colorfondo='".$colorFondo."',
                                 tipoletra ='".$tipoletra."'
-                                WHERE usuario='".$usuario."' && clave='".$clave."'");
+                                WHERE usuario='".$usuario."' && clave='".$clave."'";
+                                $actualizarUsuario=$conexion->query($sql);
+
+                                echo $sql;
             
                             }catch(PDOException $e){
                                 echo 'Error de consulta: ' . $e->getMessage();
                                 exit;
                             }
+
+                            $_SESSION["colorfondo"] = $colorFondo;
+                            $_SESSION["tipoletra"] = $tipoletra;
         
                             header("Location: perfil.php");
                         }

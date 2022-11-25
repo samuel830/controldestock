@@ -110,7 +110,8 @@
         <div class="contenido">
             <div>
                 <h1>GESTOR DE CONTENIDO</h1>
-                <br><br>
+                <h2><?php echo $detallesUsuario["nombrecompleto"] ?></h2>
+                <br>
                 <a href="crear.php"><button type="button" class="success">Crear</button></a>
                 <br>
                 <br>

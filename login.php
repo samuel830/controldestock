@@ -39,7 +39,7 @@
                     $busquedaUsuariosClave = $conexion->query("SELECT * FROM usuarios where usuario='$usuarioConfirmado' && clave='$claveEncriptada'");
                     $detallesUsuarioClave = $busquedaUsuariosClave->fetch();
                 }catch(PDOException $ex){
-                    echo 'Error de consulta: ' . $e->getMessage();
+                    echo 'Error de consulta: ' . $ex->getMessage();
                     exit;
                 }
 

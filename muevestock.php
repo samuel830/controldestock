@@ -14,6 +14,14 @@
             <link rel="stylesheet" href="estilos.css">
         </head>
         <body style="background-color: #<?php echo $_SESSION["colorfondo"] ?>; font-family: '<?php echo $_SESSION["tipoletra"] ?>'">
+        <div class="menu">
+            <ul>
+                <li><a href="listado.php">Listado</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li class="item-r"><a href="#">Cerrar sesión</a></li>
+            </ul>
+        </div>
+        <br>
             <?php
             if(count($_GET) == 2){
                 $nombreProducto = $_GET["nombre"];

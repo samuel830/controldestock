@@ -37,6 +37,14 @@
             <link rel="stylesheet" href="estilos.css">
         </head>
         <body style="background-color: #<?php echo $_SESSION["colorfondo"] ?>; font-family: '<?php echo $_SESSION["tipoletra"] ?>'">
+        <div class="menu">
+            <ul>
+                <li><a href="listado.php">Listado</a></li>
+                <li><a href="perfil.php">Perfil</a></li>
+                <li class="item-r"><a href="#">Cerrar sesión</a></li>
+            </ul>
+        </div>
+        <br>
             <div class="titulo">
             <h1>Perfil</h1>
             </div>
